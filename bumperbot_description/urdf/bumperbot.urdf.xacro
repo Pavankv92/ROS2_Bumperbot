@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<robot name="bumperbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:include filename="bumperbot_base.xacro" />
+    <xacro:include filename="bumperbot_gazebo.xacro" />
+    <xacro:include filename="bumperbot_ros2_control.xacro" />
+
+
+
+</robot>

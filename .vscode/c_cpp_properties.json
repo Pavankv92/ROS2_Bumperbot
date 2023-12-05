@@ -1,23 +1,26 @@
 {
-  "configurations": [
-    {
-      "browse": {
-        "databaseFilename": "${default}",
-        "limitSymbolsToIncludedHeaders": false
-      },
-      "includePath": [
-        "/home/pavankv/odom_ws/install/bumperbot_cpp_pkg/include/**",
-        "/opt/ros/humble/include/**",
-        "/home/pavankv/odom_ws/src/bumperbot_controller/include/**",
-        "/home/pavankv/odom_ws/src/bumperbot_cpp_pkg/include/**",
-        "/usr/include/**"
-      ],
-      "name": "ROS",
-      "intelliSenseMode": "gcc-x64",
-      "compilerPath": "/usr/bin/gcc",
-      "cStandard": "gnu11",
-      "cppStandard": "c++14"
-    }
-  ],
-  "version": 4
+    "configurations": [
+        {
+            "browse": {
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                "/home/pavankv/odom_ws/install/bumperbot_cpp_pkg/include/**",
+                "/opt/ros/humble/include/**",
+                "/home/pavankv/odom_ws/src/bumperbot_controller/include/**",
+                "/home/pavankv/odom_ws/src/bumperbot_cpp_pkg/include/**",
+                "/usr/include/**",
+                "/opt/ros/humble/include/rclcpp",
+                "/home/pavankv/odom_ws/install/**"
+                
+            ],
+            "name": "ROS",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu11",
+            "cppStandard": "c++14"
+        }
+    ],
+    "version": 4
 }

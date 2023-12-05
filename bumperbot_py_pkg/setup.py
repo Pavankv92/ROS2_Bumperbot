@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            "simple_parameter = bumperbot_py_pkg.simple_parameter:main"
+            "simple_parameter = bumperbot_py_pkg.simple_parameter:main",
+            "simple_tf_kinematics = bumperbot_py_pkg.simple_tf_kinematics:main"
         ],
     },
 )

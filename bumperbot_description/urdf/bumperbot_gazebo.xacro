@@ -71,4 +71,57 @@
             <parameters>$(find bumperbot_controller)/config/bumperbot_controllers.yaml</parameters>
         </plugin>
     </gazebo>
+
+    <gazebo reference="imu_link">
+        <sensor name="imu" type="imu">
+            <plugin name="imu" filename="libgazebo_ros_imu_sensor.so" >
+                <topic_name>imu</topic_name>
+            </plugin>
+            <always_on>true</always_on>
+            <update_rate>100</update_rate>
+            <imu>
+                <angular_velocity>
+                    <x>
+                        <noise type="gaussian">
+                            <mean>0.0</mean>
+                            <stddev>2e-4</stddev>
+                        </noise>
+                    </x>
+                    <y>
+                        <noise type="gaussian">
+                            <mean>0.0</mean>
+                            <stddev>2e-4</stddev>
+                        </noise>
+                    </y>
+                    <z>
+                        <noise type="gaussian">
+                            <mean>0.0</mean>
+                            <stddev>2e-4</stddev>
+                        </noise>
+                    </z>
+                </angular_velocity>
+                <linear_accelration>
+                    <x>
+                        <noise type="gaussian">
+                            <mean>0.0</mean>
+                            <stddev>1.7e-2</stddev>
+                        </noise>
+                    </x>
+                    <y>
+                        <noise type="gaussian">
+                            <mean>0.0</mean>
+                            <stddev>1.7e-2</stddev>
+                        </noise>
+                    </y>
+                    <z>
+                        <noise type="gaussian">
+                            <mean>0.0</mean>
+                            <stddev>1.7e-2</stddev>
+                        </noise>
+                    </z>
+                </linear_accelration>
+            </imu>
+        </sensor>
+        <material>Gazebo/Grey</material>
+    </gazebo>
 </robot>

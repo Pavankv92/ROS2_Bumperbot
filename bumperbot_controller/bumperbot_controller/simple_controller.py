@@ -129,8 +129,8 @@ class SimpleController(Node):
         self.odom_pub_.publish(self.odom_msg_)
         self.br_.sendTransform(self.odom_to_base_footprint_tf)
 
-        self.get_logger().info(f"linear velocity of the robot: {linear_vel}, and the angular velocity: {angular_vel}")
-        self.get_logger().info(f"x position: {self.x_}, y position: {self.y_}, and theta: {self.theta_}")
+        # self.get_logger().info(f"linear velocity of the robot: {linear_vel}, and the angular velocity: {angular_vel}")
+        # self.get_logger().info(f"x position: {self.x_}, y position: {self.y_}, and theta: {self.theta_}")
 
 
 def main():

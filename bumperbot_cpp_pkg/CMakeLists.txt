@@ -11,6 +11,7 @@ find_package(rclcpp REQUIRED)
 find_package(rcl_interfaces REQUIRED)
 find_package(turtlesim REQUIRED)
 find_package(tf2_ros REQUIRED)
+find_package(tf2 REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(bumperbot_msgs REQUIRED)
 
@@ -24,6 +25,7 @@ turtlesim
 tf2_ros
 geometry_msgs
 bumperbot_msgs
+tf2
 )
 
 add_executable(simple_parameter src/simple_parameter.cpp)

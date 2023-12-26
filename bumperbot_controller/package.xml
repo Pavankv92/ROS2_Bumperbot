@@ -13,10 +13,17 @@
   
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>ros2launch</exec_depend>
+  <exec_depend>tf_transformations</exec_depend>
+
 
   <depend>rclpy</depend>
   <depend>std_msgs</depend>
   <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2</depend>
+
 
   <depend>rclcpp</depend>
   <depend>eigen</depend>

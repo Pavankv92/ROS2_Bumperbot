@@ -4,6 +4,8 @@
 #include <tf2_ros/static_transform_broadcaster.h>
 #include <tf2_ros/buffer.h>
 #include <tf2_ros/transform_listener.h>
+#include <tf2/LinearMath/Quaternion.h>
+
 #include <bumperbot_msgs/srv/get_transform.hpp>
 
 #include <memory>
@@ -26,11 +28,14 @@ class SimpleTfKinematics : public rclcpp::Node{
         rclcpp::TimerBase::SharedPtr timer_ ;
         double x_increment_{0.05};
         double last_x_ ;
+        int rotations_counter_{0};
+        tf2::Quaternion last_orientaion_;
+        tf2::Quaternion orientation_increment_;
+
 
         void timer_callback();
         bool get_tf_callback(const std::shared_ptr<bumperbot_msgs::srv::GetTransform::Request> request,
         const std::shared_ptr<bumperbot_msgs::srv::GetTransform::Response> response);
-
 
 
 };

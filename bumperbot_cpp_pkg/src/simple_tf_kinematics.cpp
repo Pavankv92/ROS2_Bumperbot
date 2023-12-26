@@ -4,7 +4,7 @@ using namespace std::chrono_literals;
 using std::placeholders::_1;
 using std::placeholders::_2;
 
-SimpleTfKinematics::SimpleTfKinematics(const std::string &name) : Node(name)
+SimpleTfKinematics::SimpleTfKinematics(const std::string &name) : Node(name), x_increment_(0.05), last_x_(0.0), rotations_counter_(0)
 {
     static_tf_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
     dynamic_tf_broadcaster_ = std::make_shared<tf2_ros::StaticTransformBroadcaster>(this);
@@ -28,6 +28,9 @@ SimpleTfKinematics::SimpleTfKinematics(const std::string &name) : Node(name)
     timer_ = create_wall_timer(0.1s, std::bind(&SimpleTfKinematics::timer_callback, this));
 
     get_transform_srv_ = create_service<bumperbot_msgs::srv::GetTransform>("get_transform", std::bind(&SimpleTfKinematics::get_tf_callback, this, _1, _2));
+
+    last_orientaion_.setRPY(0, 0, 0);
+    orientation_increment_.setRPY(0, 0, 0.05);
 }
 
 void SimpleTfKinematics::timer_callback()
@@ -38,12 +41,22 @@ void SimpleTfKinematics::timer_callback()
     dynamic_tf_msg_.transform.translation.x = last_x_ + x_increment_;
     dynamic_tf_msg_.transform.translation.y = 0.0;
     dynamic_tf_msg_.transform.translation.z = 0.0;
-    dynamic_tf_msg_.transform.rotation.x = 0.0;
-    dynamic_tf_msg_.transform.rotation.y = 0.0;
-    dynamic_tf_msg_.transform.rotation.z = 0.0;
-    dynamic_tf_msg_.transform.rotation.w = 1.0;
+    tf2::Quaternion q;
+    q = last_orientaion_ * orientation_increment_;
+    q.normalize();
+    dynamic_tf_msg_.transform.rotation.x = q.x();
+    dynamic_tf_msg_.transform.rotation.y = q.y();
+    dynamic_tf_msg_.transform.rotation.z = q.z();
+    dynamic_tf_msg_.transform.rotation.w = q.w();
     dynamic_tf_broadcaster_->sendTransform(dynamic_tf_msg_);
     last_x_ = dynamic_tf_msg_.transform.translation.x;
+    last_orientaion_ = q;
+    rotations_counter_ ++;
+
+    if(rotations_counter_ >=100){
+        orientation_increment_ = orientation_increment_.inverse();
+        rotations_counter_ = 0;
+    }
 }
 
 bool SimpleTfKinematics::get_tf_callback(const std::shared_ptr<bumperbot_msgs::srv::GetTransform::Request> request,

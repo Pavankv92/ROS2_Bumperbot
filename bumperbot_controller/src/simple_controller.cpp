@@ -44,7 +44,7 @@ SimpleController::SimpleController(const std::string &name)
     tf_stamped_msg_.header.frame_id = "odom";
     tf_stamped_msg_.child_frame_id = "base_footprint";
 
-    RCLCPP_INFO_STREAM(get_logger(), "Conversion matrix:" << speed_conversion_);
+    // RCLCPP_INFO_STREAM(get_logger(), "Conversion matrix:" << speed_conversion_);
 }
 
 void SimpleController::velocity_callback(const geometry_msgs::msg::TwistStamped &msg)
@@ -110,9 +110,11 @@ void SimpleController::joint_callback(const sensor_msgs::msg::JointState &msg)
     odom_pub_->publish(odom_msg_);
     tf_br_->sendTransform(tf_stamped_msg_);
 
-
-    RCLCPP_INFO_STREAM(get_logger(), "linear velocity: " << linear_vel << "Angular velocity: " << angular_vel);
-    RCLCPP_INFO_STREAM(get_logger(), "x: " << x_ << "y: " << y_ << "theta: " << theta_);
+/*
+RCLCPP_INFO_STREAM(get_logger(), "linear velocity: " << linear_vel << "Angular velocity: " << angular_vel);
+RCLCPP_INFO_STREAM(get_logger(), "x: " << x_ << "y: " << y_ << "theta: " << theta_);
+*/
+    
 }
 
 int main(int argc, char *argv[])

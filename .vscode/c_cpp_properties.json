@@ -12,8 +12,8 @@
                 "/home/pavankv/odom_ws/src/bumperbot_cpp_pkg/include/**",
                 "/usr/include/**",
                 "/opt/ros/humble/include/rclcpp",
-                "/home/pavankv/odom_ws/install/**"
-                
+                "/home/pavankv/odom_ws/install/**",
+                "${workspaceFolder}/bumperbot_localization/include/**"
             ],
             "name": "ROS",
             "intelliSenseMode": "gcc-x64",

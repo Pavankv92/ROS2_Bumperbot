@@ -97,8 +97,8 @@ void NoisyController::joint_callback(const sensor_msgs::msg::JointState &msg)
     odom_pub_->publish(odom_msg_);
     tf_br_->sendTransform(tf_stamped_msg_);
 
-    RCLCPP_INFO_STREAM(get_logger(), "linear velocity: " << linear_vel << "Angular velocity: " << angular_vel);
-    RCLCPP_INFO_STREAM(get_logger(), "x: " << x_ << "y: " << y_ << "theta: " << theta_);
+    // RCLCPP_INFO_STREAM(get_logger(), "linear velocity: " << linear_vel << "Angular velocity: " << angular_vel);
+    // RCLCPP_INFO_STREAM(get_logger(), "x: " << x_ << "y: " << y_ << "theta: " << theta_);
 }
 
 int main(int argc, char *argv[])
